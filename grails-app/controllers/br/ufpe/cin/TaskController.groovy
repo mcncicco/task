@@ -15,15 +15,7 @@ class TaskController {
     ]
 
      def index(Integer max) {
-        Integer count = Task.count()
-
-        for(Task t : Task.list(params)){
-            if(t.completa.equals("Sim")){
-                count = count -1
-            }
-        }
- 
-        respond Task.list(sort: "deadline"), model:[taskInstanceCount: count]
+       
     }
 
 
