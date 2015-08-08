@@ -96,7 +96,7 @@
 		            <g:actionSubmit class="completeRow" action="create" value="${message(code: 'Adcionar Tarefa', default: 'Adcionar Tarefa')}" />
 		        </fieldset>
 		    </g:form>
-			<footer>Você tem ${taskInstanceCount ?: 0} tarefas</footer>
+			
 
 			
 			
