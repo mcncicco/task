@@ -9,8 +9,9 @@ import grails.transaction.Transactional
 class TaskController {
 
     static allowedMethods = [
-        save: "POST", update: "PUT", delete: "DELETE"
         index: 'GET', show: 'GET', create: 'GET', edit: 'GET', 
+        save: "POST", update: "PUT", delete: "DELETE"
+        
     ]
 
 
