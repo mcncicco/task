@@ -14,23 +14,17 @@ class TaskController {
         
     ]
 
-
+    def count();
 
      def index(Integer max) {
-        System.out.println("Indexxxxxxx")
-        System.out.println("Index3")
         Integer count = Task.count()
-        System.out.println("Index2")
-        System.out.println(count);
+
         for(Task t : Task.list(params)){
             if(t.completa.equals("Sim")){
                 count = count -1
             }
         }
-        System.out.println(count);
-
-     
-    
+ 
         respond Task.list(sort: "deadline"), model:[taskInstanceCount: count]
     }
 
@@ -42,13 +36,11 @@ class TaskController {
     }
 
     def create() {
-        System.out.println("Create");
         respond new Task(params)
     }
 
     @Transactional
     def save(Task taskInstance) {
-        System.out.println("Save");
         if (taskInstance == null) {
             notFound()
             return
@@ -71,7 +63,6 @@ class TaskController {
     }
 
     def edit(Task taskInstance) {
-        System.out.println("Edit");
         if(taskInstance.completa.equals("Sim")){
             flash.message = message(code: 'Esta Tarefa já foi completada! Não pode ser editada!', args: [message(code: 'bbb', default: 'cccc'), taskInstance.id])
             redirect(controller: "task", action: "index")
@@ -82,7 +73,6 @@ class TaskController {
         
     }
     def complete(Task taskInstance) {
-        System.out.println("Complete");
         taskInstance.completa = "Sim"
         taskInstance.save flush:true
         redirect(controller: "task", action: "index")
@@ -90,7 +80,6 @@ class TaskController {
 
     @Transactional
     def update(Task taskInstance) {
-        System.out.println("Update");
         if (taskInstance == null) {
             notFound()
             return
@@ -114,7 +103,6 @@ class TaskController {
 
     @Transactional
     def delete(Task taskInstance) {
-        System.out.println("Delete");
 
         if (taskInstance == null) {
             notFound()
