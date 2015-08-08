@@ -32,11 +32,11 @@
 <br>
 		<ul>
 
-			<li><form action="/task/task/index">
+			<li><form action="/task/index">
 					 		<input type="submit" value="Tarefas">
 							</form></li>
 
-							<li><form action="/task/categoria/index">
+							<li><form action="/categoria/index">
 					 		<input type="submit" value="Categorias">
 							</form>	</li></ul>
 							
