@@ -8,9 +8,25 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class TaskController {
 
-    def index(Integer max) {
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+
+
+     def index(Integer max) {
+        System.out.println("Index")
+        Integer count = Task.count()
+        System.out.println("Index2")
+        System.out.println(count);
+        for(Task t : Task.list(params)){
+            if(t.completa.equals("Sim")){
+                count = count -1
+            }
+        }
+        System.out.println(count);
+
+     
     
-        respond Task.list(sort: "deadline")
+        respond Task.list(sort: "deadline"), model:[taskInstanceCount: count]
     }
 
 

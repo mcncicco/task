@@ -39,9 +39,10 @@ environments {
     
 	production {
 	    dataSource {
-	        dbCreate = "create-drop"
+	        dbCreate = "update"
 	        driverClassName = "org.postgresql.Driver"
 	        dialect = org.hibernate.dialect.PostgreSQLDialect
+	         System.out.println(System.env.DATABASE_URL);
 
 	        uri = new URI(System.env.DATABASE_URL?:"postgres://test:test@localhost/test")
 
