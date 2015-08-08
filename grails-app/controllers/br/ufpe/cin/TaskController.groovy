@@ -10,11 +10,26 @@ class TaskController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+
+
+     def index(Integer max) {
         System.out.println("Index");
-        params.max = Math.min(max ?: 10, 100)
-        respond Task.list(params), model:[taskInstanceCount: Task.count()]
+        Integer count = Task.count()
+        
+        System.out.println(count);
+        for(Task t : Task.list(params)){
+            if(t.completa.equals("Sim")){
+                count = count -1
+            }
+        }
+        System.out.println(count);
+
+     
+    
+        respond Task.list(sort: "deadline"), model:[taskInstanceCount: count]
     }
+
+
 
     def show(Task taskInstance) {
         log.info "Show"
@@ -44,7 +59,7 @@ class TaskController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'task.label', default: 'Task'), taskInstance.id])
-                redirect taskInstance
+                 redirect(controller: "task", action: "index")
             }
             '*' { respond taskInstance, [status: CREATED] }
         }
@@ -52,7 +67,14 @@ class TaskController {
 
     def edit(Task taskInstance) {
         System.out.println("Edit");
-        respond taskInstance
+        if(taskInstance.completa.equals("Sim")){
+            flash.message = message(code: 'Esta Tarefa já foi completada! Não pode ser editada!', args: [message(code: 'bbb', default: 'cccc'), taskInstance.id])
+            redirect(controller: "task", action: "index")
+            
+        }else{
+            respond taskInstance    
+        }
+        
     }
     def complete(Task taskInstance) {
         System.out.println("Complete");
@@ -78,8 +100,8 @@ class TaskController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Task.label', default: 'Task'), taskInstance.id])
-                redirect taskInstance
+               // flash.message = message(code: 'default.updated.message', args: [message(code: 'Task.label', default: 'Task'), taskInstance.id])
+               redirect(controller: "task", action: "index")
             }
             '*'{ respond taskInstance, [status: OK] }
         }

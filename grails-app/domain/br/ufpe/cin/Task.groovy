@@ -16,4 +16,5 @@ class Task {
     static mapping = {
          categoria lazy:false
     }
+
 }

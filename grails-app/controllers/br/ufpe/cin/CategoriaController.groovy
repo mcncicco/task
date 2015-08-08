@@ -40,7 +40,7 @@ class CategoriaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'categoria.label', default: 'Categoria'), categoriaInstance.id])
-                redirect categoriaInstance
+               redirect(controller: "categoria", action: "index")
             }
             '*' { respond categoriaInstance, [status: CREATED] }
         }
@@ -67,7 +67,7 @@ class CategoriaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Categoria.label', default: 'Categoria'), categoriaInstance.id])
-                redirect categoriaInstance
+                 redirect(controller: "categoria", action: "index")
             }
             '*'{ respond categoriaInstance, [status: OK] }
         }

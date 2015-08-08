@@ -12,6 +12,7 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+		<link rel="stylesheet" href="/task/assets/02-tasks.css"  />
   		<!-- asset:stylesheet src="application.css"/ -->
 		<!-- asset:javascript src="application.js"/ -->
 
@@ -27,7 +28,24 @@
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<footer>Você tem <span id="taskCount"></span> tarefas</footer>
+		
+<br>
+		<ul>
+
+			<li><form action="/task/task/index">
+					 		<input type="submit" value="Tarefas">
+							</form></li>
+
+							<li><form action="/task/categoria/index">
+					 		<input type="submit" value="Categorias">
+							</form>	</li></ul>
+							
+						
+							
+						
+
+
+	
 	</body>
 	<script>
 
@@ -43,7 +61,19 @@ $(document).ready(function() {
 				}	
 			});
 
-	$("#taskCount").html($("#tblTasks tr").not('.taskCompleted').not('.not').length-1); 
+
+			$('#tblTasks tr').children('td').children('time').each (function(){
+		
+				var dataTask = new Date($(this).text());
+			
+			
+				if( dataTask < new Date()) {
+					$(this).parent().parent().addClass('overdue'); 
+				}else if (dataTask - new Date() <= 432000000){
+					//Compara??o com milesegundos equivalente a 5 dias.
+					$(this).parent().parent().addClass('warning');
+				}	
+			});
 	
 
 });

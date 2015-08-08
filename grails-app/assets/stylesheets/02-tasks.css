@@ -1,13 +1,16 @@
 @CHARSET "UTF-8";
 
 body, h1, h2, h3, h4, h5, h6, p, ul, dl, ol, form, fieldset, input, label, table, tbody, tfoot, th, tr, td, textarea, select {
-font-family: "helvetica neue", helvetica, "lucinda sans unicode", "sans serif";
-font-weight: normal;
-color: #333;
-padding: 0;
-border: 0;
-margin: 0;
-font-size: 12px;
+	font-family: "helvetica neue", helvetica, "lucinda sans unicode", "sans serif";
+	font-weight: normal;
+	color: #333;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	margin-left: 20px;
+	
+				
+	
 }
 
 
@@ -20,6 +23,7 @@ header {
 	font-size: 20px;
 	text-align:center;
 	line-height: 80px;
+	margin-left: -20px;
 }
 
 footer {
@@ -30,19 +34,20 @@ footer {
    text-align:center;
    line-height: 80px;
    margin-top:30px;
+   margin-left: -20px;
 }
 
 table, th, td
 {
-border: 1px solid #888;
+	border: 1px solid #888;
 }
 
 section {
-	margin:20px 0 0 20px;
+	padding: 10px;
 }
 
 table {
-	width:90%;
+	width: 80%;
 	border-collapse:collapse;
 }
 
@@ -50,7 +55,7 @@ thead {
 	line-height: 30px;
 }
 
-thead th {
+thead th, thead th a{
 	background: #53777a;
 	color: #fff;
 	font-size: 12px;
@@ -60,7 +65,7 @@ thead th {
 
 td {
 	font-size: 11px;
-	line-height: 25px;
+	line-height: 35px;
 	padding-left: 10px;
 }
 
@@ -80,7 +85,29 @@ td form fieldset input {
 	border: 1px solid #5b5b5b;
 	font-size: 13px;
 	text-align:  center;
-	padding:5px 10px;
+	padding:5px;
+	cursor: pointer;
+}
+
+.submit {
+	background: #53777a;
+	color: #fff;
+	width: 80px;
+	text-decoration: none;
+	border: 1px solid #5b5b5b;
+	font-size: 13px;
+	text-align:  center;
+	padding:5px;
+	cursor: pointer;
+	margin: 10px 0px 0px 0px;
+}
+
+.message {
+	background: #f5f5f5;
+	border: 1px solid #ccc;
+	margin: 10px 10px 0px 10px;
+	padding: 3px;
+	color: #000;
 }
 
 label {
@@ -89,8 +116,7 @@ label {
 	color: #333;
 }
 
-input {
-	border-radius: 3px;
+input, select {
 	height: 24px;
 	border: 1px solid #AAA;
 	padding: 0 7px;
@@ -104,7 +130,6 @@ select {
 	border: 1px solid #AAA;
 	overflow: hidden;
 	margin-right: 15px;
-	width: 200px;
 }
 
 .required {
@@ -133,5 +158,6 @@ label.error {
 }
 
 .taskCompleted {
+	background: #ccc;
 	text-decoration: line-through;
 }
