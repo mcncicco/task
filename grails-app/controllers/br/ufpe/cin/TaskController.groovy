@@ -9,11 +9,18 @@ import grails.transaction.Transactional
 class TaskController {
 
     static allowedMethods = [
-        index: 'GET', show: 'GET', create: 'GET', edit: 'GET', 
+        index: 'GET', 
+        count: 'GET', 
+        create: 'GET', 
+        edit: 'GET', 
         save: "POST", update: "PUT", delete: "DELETE"
         
     ]
 
+
+     def count() {
+       
+    }
      def index(Integer max) {
        
     }
