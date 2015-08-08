@@ -14,8 +14,6 @@ class TaskController {
         
     ]
 
-    def count();
-
      def index(Integer max) {
         Integer count = Task.count()
 
