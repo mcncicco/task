@@ -14,6 +14,7 @@ class TaskController {
 
      def index(Integer max) {
         System.out.println("Index")
+        System.out.println("Index3")
         Integer count = Task.count()
         System.out.println("Index2")
         System.out.println(count);
