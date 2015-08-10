@@ -1,4 +1,4 @@
-grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
+rails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -47,7 +47,11 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        runtime 'postgresql:postgresql:8.4-702.jdbc3'
+        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
+        // runtime 'mysql:mysql-connector-java:5.1.29'
+        // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
+        test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+    runtime 'postgresql:postgresql:8.4-702.jdbc3'
     }
 
     plugins {
@@ -69,5 +73,9 @@ grails.project.dependency.resolution = {
         //compile ":less-asset-pipeline:1.10.0"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
+
+    compile ':heroku:1.0.1'
+    compile ':cloud-support:1.0.8'
+
     }
 }
