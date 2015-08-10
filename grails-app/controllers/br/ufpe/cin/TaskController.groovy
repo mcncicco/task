@@ -8,27 +8,26 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class TaskController {
 
-    static allowedMethods = [
-        index: 'GET', 
-        count: 'GET', 
-        create: 'GET', 
-        edit: 'GET', 
-        save: "POST", update: "PUT", delete: "DELETE"
+   static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+
+    def index(Integer max) {
+      
+        Integer count = Task.count()
         
-    ]
-
-
-     def count() {
-       
-    }
-     def index(Integer max) {
-       
+        System.out.println(count);
+        for(Task t : Task.list(params)){
+            if(t.completa.equals("Sim")){
+                count = count -1
+            }
+        }
+       respond Task.list(sort: "deadline"), model:[taskInstanceCount: count]
     }
 
 
 
     def show(Task taskInstance) {
-        log.info "Show"
+      
         respond taskInstance
     }
 
